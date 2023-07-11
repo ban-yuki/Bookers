@@ -9,12 +9,12 @@ class BooksController < ApplicationController
   def create
     book = Book.new(book_params)
     book.save
-    redirect_to '/top'
+    edirect_to books_path(book.id)
   end
     
   def index
     @book = Book.new
-    @book = Book.find(params[:id])  
+    @books = Book.all
   end
 
   def show
