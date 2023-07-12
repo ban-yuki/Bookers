@@ -1,6 +1,18 @@
-<p>Title:</p>
-<span><%= book.title %></span>
+<%= form_with model: @book, url: books_path, method: :patch do |f| %> 
+
+  <p>Title:</p>
+    <%=@book.title %>
+    
+  <p>Body:</p>
+    <%=@book.body %>
+
+ 
+  <span>
+    <%= link_to "Edit", edit_book_path %>
+  </span>
   
-  
-<p>Body:</p>
-  
+  <span>
+    <%= link_to "Back", books_path %>
+  </span>
+
+<% end %>

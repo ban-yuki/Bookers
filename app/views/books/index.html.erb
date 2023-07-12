@@ -9,22 +9,21 @@
   <span><%= book.body %></span>
   
   <span>
-  <%= link_to "Show", book_path(book.id) %>
+    <%= link_to "Show", book_path(book.id) %>
   </span>
   
   <span>
-  <%= link_to "Edit", book_path(book.id) %>
+    <%= link_to "Edit", edit_book_path(book.id) %>
   </span>
   
   <span>
-  <%= link_to "Destroy", book_path(book.id) %>
+    <%= link_to "Destroy", book_path(book.id) %>
   </span>
   
 <% end %>
 
 <!-- form_with部分 -->
-<%= form_with model: @book, url: '/books', method: :post do |f| %>
-
+<%= form_with model: @book, url: books_path, method: :post do |f| %>
 
   <h3>New book</h3>
   <h5>Title</h5>
