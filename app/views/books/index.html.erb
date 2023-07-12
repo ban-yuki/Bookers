@@ -1,31 +1,41 @@
 <h2>Books</h2>
-
-<% @books.each do |book| %>
-
-  <p>Title</p>
-  <span><%= book.title %></span>
-  
-  <p>Body</p>
-  <span><%= book.body %></span>
-  
-  <span>
-    <%= link_to "Show", book_path(book.id) %>
-  </span>
-  
-  <span>
-    <%= link_to "Edit", edit_book_path(book.id) %>
-  </span>
-  
-  <span>
-    <%= link_to "Destroy", book_path(book.id) %>
-  </span>
-  
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
 <% end %>
+
+
+
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th>
+  </tr>
+  <record>
+    <% @books.each do |book| %>
+      <tr>
+        <th><%= book.title %></th>
+        <th><%= book.body %></th>
+        <th><%= link_to "Show", book_path(book.id) %></th>
+        <th><%= link_to "Edit", edit_book_path(book.id) %></th>
+        <th><%= link_to "Destroy", book_path(book.id) %></th>
+      </tr>
+    <% end %>
+  </record>
+
+</table>  
+
 
 <!-- form_with部分 -->
 <%= form_with model: @book, url: books_path, method: :post do |f| %>
 
   <h3>New book</h3>
+
   <h5>Title</h5>
   <%= f.text_field :title %>
 	
